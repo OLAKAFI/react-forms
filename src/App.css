@@ -1,0 +1,91 @@
+*, body, html {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.App {
+  
+}
+
+.header{
+  
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  background-color: green;
+  color: white;
+  padding: 5px 0px ;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  
+  
+  
+}
+
+.form-style{
+  
+  border-radius: 2px;
+  padding: 0px 0px;
+  
+  
+}
+
+.input-margin{
+  margin-bottom: 7px;
+}
+
+.input-height{
+  line-height: 2em;
+}
+
+.btn-container{
+  text-align: center;
+  margin: 4px 0px;
+  
+  
+}
+
+.btn-success{
+  background-color: green;
+  font-size: 18px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  border: none;
+}
+
+@media (max-width: 375.98px) {
+  
+
+
+  .form-container{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    
+    
+    
+  }
+  .form-style{
+    
+    width: 100%;
+    
+  }
+
+  .header{
+  
+    font-size: larger;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .form-style{
+    
+    width: 100%;
+    justify-content: center;
+    
+  }
+}
