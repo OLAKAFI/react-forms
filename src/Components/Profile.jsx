@@ -96,14 +96,14 @@ export class Profile extends Component {
                         <div className='input-margin'>
                             <label >
                                 <div>Address:</div>
-                                <textarea name="address" value={this.state.address} onChange={this.handleChange} cols="25" rows="4"  ></textarea>
+                                <textarea name="address" value={this.state.address} onChange={this.handleChange}  rows="4"  ></textarea>
                                 
                             </label>
                         </div>
                         <div className='input-margin'>
                             <label >
                                 <div>Bio:</div>
-                                <textarea  name="bio" value={this.state.bio} onChange={this.handleChange} cols="25"  rows="6" ></textarea>
+                                <textarea  name="bio" value={this.state.bio} onChange={this.handleChange}   rows="6" ></textarea>
                                 
                             </label>
                         </div>
