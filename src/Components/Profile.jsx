@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Card, Form, Row, Col, FloatingLabel, Button } from 'react-bootstrap';
 
 export class Profile extends Component {
     constructor (props) {
         super(props);
 
-        this.state = {firstname: " ", lastname: " ", email: "", gender: "", address: " ", bio: " "}
+        this.state = {firstname: " ", lastname: " ", email: "", gender: "", address: " ", bio: " ", show: false}
     }
 
     // handleFirstName = (event) => {
@@ -46,7 +48,8 @@ export class Profile extends Component {
     handleSubmit = (event) => {
         // console.log(this.state.firstname, this.state.lastname, this.state.email, this.state.gender, this.state.address, this.state.bio )
         event.preventDefault();
-        console.log(this.state)
+        console.log(this.state);
+        this.setState ({show: true});      
     }
 
 
@@ -56,66 +59,130 @@ export class Profile extends Component {
       <>
         
         <div className='form-style ' >
-            <h1 className='header'>Profile Registration Page</h1>
-            <form onSubmit={this.handleSubmit}  >
+            <div>
+                <h1 className='header'>Profile Registration Page</h1>
+            </div>
+            
+            <form onSubmit={this.handleSubmit} className="my-5 px-5" >
                 <div className=''>
                     <div >
-                        <div className='input-margin'>
-                            <label >
-                                <div>First Name:</div>
-                                <input type="text" name="firstname" value={this.state.firstname} onChange={this.handleChange} className="input-height" />
-                            </label>
-                        </div>
-                        <div className='input-margin'>
-                            <label >
-                                <div>Last Name:</div>
-                                <input type="text" name="lastname" value={this.state.lastname} onChange={this.handleChange} className="input-height"/>
-                            </label>
-                        </div>
-                        <div className='input-margin'>
-                            <label >
-                                <div>Email:</div>
-                                <input type="email" name="email" value={this.state.email} onChange={this.handleChange} className="input-height" />
+                        <Row className="g-2 mb-3">
+                            <Col md>
                                 
-                            </label>
-                        </div>
-                        <div className='input-margin'>
-                            <label >
-                                <div>Gender:</div>
-                                <select name="gender" value={this.state.gender} onChange={this.handleChange} className="input-height">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
-                            </label>
-                        </div>
-                        
-                    </div>
-                    <div>
-                        
-                        
-                        <div className='input-margin'>
-                            <label >
-                                <div>Address:</div>
-                                <textarea name="address" value={this.state.address} onChange={this.handleChange}  rows="4"  ></textarea>
+                                <Form.Floating className="">
+                                    <Form.Control
+                                    id="floatingInputCustom"
+                                    type="text"
+                                    placeholder="name@example.com"
+                                    name="firstname" value={this.state.firstname} onChange={this.handleChange}
+                                    />
+                                    <label htmlFor="floatingInputCustom">First Name</label>
+                                </Form.Floating>
+                            </Col>
+                            <Col md>
                                 
-                            </label>
-                        </div>
-                        <div className='input-margin'>
-                            <label >
-                                <div>Bio:</div>
-                                <textarea  name="bio" value={this.state.bio} onChange={this.handleChange}   rows="6" ></textarea>
+                                <Form.Floating className="">
+                                    <Form.Control
+                                    name="lastname" value={this.state.lastname} onChange={this.handleChange}
+                                    id="floatingInputCustom"
+                                    type="text"
+                                    placeholder="name@example.com"
+                                    
+                                    />
+                                    <label htmlFor="floatingInputCustom">Last Name</label>
+                                </Form.Floating>
                                 
-                            </label>
-                        </div>
+                            </Col>
+                        </Row>
+
+                        <Form.Floating className="mb-3">
+                            <Form.Control
+                            id="floatingInputCustom"
+                            type="email"
+                            placeholder="name@example.com"
+                            name="email" value={this.state.email} onChange={this.handleChange}
+                            />
+                            <label htmlFor="floatingInputCustom">Email address</label>
+                        </Form.Floating>
+
+                        <FloatingLabel controlId="floatingSelect" label="Gender" className="mb-3">
+                            <Form.Select aria-label="Floating label select example" name="gender" value={this.state.gender} onChange={this.handleChange}>
+                                <option >Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+            
+                            </Form.Select>
+                        </FloatingLabel>
+
+                        <Form.Floating className="mb-3">
+                            <Form.Control
+                            id="floatingInputCustom"
+                            type="textarea"
+                            name="address" value={this.state.address} onChange={this.handleChange}
+                            />
+                            <label htmlFor="floatingInputCustom">Address</label>
+                        </Form.Floating>
+                        <Form.Floating className="mb-3">
+                            <Form.Control
+                            id="floatingInputCustom"
+                            type="textarea"
+                            name="bio" value={this.state.bio} onChange={this.handleChange}
+                            />
+                            <label htmlFor="floatingInputCustom">Bio</label>
+                        </Form.Floating>
+                        
+                        
+                        
+                        
                     </div>
                     
                 </div>
-                <div className='btn-container'>
-                    <button type="submit" className='btn-success' >Register</button>
+                
+                <div className="d-grid gap-2 my-5">
+                
+                    <Button variant="success" size="lg" type="submit">
+                        Register 
+                    </Button>
+                
                 </div>
+
                 
             </form>
+            
+            
+            
+            
         </div>
+
+        <div>
+            {
+            
+                this.state.show ? 
+
+                    
+                <div className='px-auto text-center my-4'>
+                    <Card  border="success" className='mx-auto' style={{ width: '40rem' }} >
+                        <Card.Header>
+                            <Card.Title className='text-success'>Registration Successful</Card.Title>
+                        </Card.Header>
+                        
+                        <Card.Body>
+                            <Card.Text>Full Name: {this.state.firstname} {this.state.lastname}</Card.Text>
+                            <Card.Text>Email: {this.state.email}</Card.Text>
+                            <Card.Text>Address: {this.state.address}</Card.Text>
+                            <Card.Text>Bio: {this.state.bio}</Card.Text>
+                        </Card.Body>
+                    </Card>
+                    
+                </div> 
+                : 
+                <p> Please fill in your information </p>
+                
+
+            }
+            
+        </div>
+        
 
 
       </>
