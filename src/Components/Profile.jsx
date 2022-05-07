@@ -58,7 +58,7 @@ export class Profile extends Component {
     return (
       <>
         
-        <div className='form-style ' >
+        <div className='form-style'>
             <div>
                 <h1 className='header'>Profile Registration Page</h1>
             </div>
